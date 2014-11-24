@@ -27,8 +27,8 @@ object BuildSettings {
 
   val experimental = Option(System.getProperty("experimental")).exists(_ == "true")
 
-  val buildOrganization = "com.typesafe.play"
-  val buildVersion = propOr("play.version", "2.3-SNAPSHOT")
+  val buildOrganization = "com.ruimo.play"
+  val buildVersion = propOr("play.version", "2.3.6")
   val buildWithDoc = boolProp("generate.doc")
   val previousVersion = "2.3.0"
   // Libraries that are not Scala libraries or are SBT libraries should not be published if the binary
