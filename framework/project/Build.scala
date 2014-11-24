@@ -364,7 +364,8 @@ object PlayBuild extends Build {
         val () = (publishLocal in IterateesProject).value
         val () = (publishLocal in FunctionalProject).value
         val () = (publishLocal in DataCommonsProject).value
-      }
+      },
+      version := "2.3.6"
     ).dependsOn(BuildLinkProject, PlayExceptionsProject, RoutesCompilerProject, SbtRunSupportProject)
 
   lazy val PlayWsProject = PlayRuntimeProject("Play-WS", "play-ws")
