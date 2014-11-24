@@ -27,7 +27,7 @@ object BuildSettings {
 
   val experimental = Option(System.getProperty("experimental")).exists(_ == "true")
 
-  val buildOrganization = "com.ruimo.play"
+  val buildOrganization = "com.typesafe.play"
   val buildVersion = propOr("play.version", "2.3.6")
   val buildWithDoc = boolProp("generate.doc")
   val previousVersion = "2.3.0"
@@ -150,6 +150,7 @@ object BuildSettings {
   def PlaySbtProject(name: String, dir: String): Project = {
     Project(name, file("src/" + dir))
       .settings(playCommonSettings: _*)
+      .settings(organization := "com.ruimo.play")
       .settings((if (publishNonCoreScalaLibraries) publishSettings else dontPublishSettings): _*)
       .settings(defaultScalariformSettings: _*)
       .settings(
