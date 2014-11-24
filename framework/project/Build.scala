@@ -150,7 +150,6 @@ object BuildSettings {
   def PlaySbtProject(name: String, dir: String): Project = {
     Project(name, file("src/" + dir))
       .settings(playCommonSettings: _*)
-      .settings(organization := "com.ruimo.play")
       .settings((if (publishNonCoreScalaLibraries) publishSettings else dontPublishSettings): _*)
       .settings(defaultScalariformSettings: _*)
       .settings(
@@ -365,7 +364,8 @@ object PlayBuild extends Build {
         val () = (publishLocal in IterateesProject).value
         val () = (publishLocal in FunctionalProject).value
         val () = (publishLocal in DataCommonsProject).value
-      }
+      },
+      organization := "com.ruimo.play"
     ).dependsOn(BuildLinkProject, PlayExceptionsProject, RoutesCompilerProject, SbtRunSupportProject)
 
   lazy val PlayWsProject = PlayRuntimeProject("Play-WS", "play-ws")
