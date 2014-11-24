@@ -365,7 +365,6 @@ object PlayBuild extends Build {
         val () = (publishLocal in FunctionalProject).value
         val () = (publishLocal in DataCommonsProject).value
       },
-      organization := "com.ruimo.play"
     ).dependsOn(BuildLinkProject, PlayExceptionsProject, RoutesCompilerProject, SbtRunSupportProject)
 
   lazy val PlayWsProject = PlayRuntimeProject("Play-WS", "play-ws")
