@@ -96,8 +96,11 @@ sealed trait BatchSql {
   def filledStatement(implicit connection: Connection) =
     getFilledStatement(connection)
 
-  def execute()(implicit connection: Connection): Array[Int] =
-    getFilledStatement(connection).executeBatch()
+  def execute()(implicit connection: Connection): Array[Int] = {
+    val statement = getFilledStatement(connection)
+println("statement = " + statement)
+    statement.executeBatch()
+  }
 
   def withQueryTimeout(seconds: Option[Int]): BatchSql =
     copy(sql = sql.withQueryTimeout(seconds))
